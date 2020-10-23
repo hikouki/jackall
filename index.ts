@@ -8,19 +8,19 @@ interface JackallOK<T> {
   value: T;
 }
 
-interface JackallNG {
+interface JackallNG<T> {
   ok: false;
   code: typeof JackallErrorCode[keyof typeof JackallErrorCode];
-  value: Error;
+  value: T | Error;
 }
 
-type JackallResult<T> = JackallOK<T> | JackallNG;
+type JackallResult<T> = JackallOK<T> | JackallNG<T>;
 
 class Jackall<T extends string> {
   private resources: {
     [K in T]?: {
       version: number;
-      living: boolean;
+      living: boolean /* TODO: Sweep. */;
     };
   } = {};
 
@@ -37,29 +37,37 @@ class Jackall<T extends string> {
       return {
         ok: false,
         code: JackallErrorCode.NOMATCH_VERSION,
-        value: new Error(""),
+        value: new Error(`Jackall Error: ${JackallErrorCode.NOMATCH_VERSION}`),
       };
     }
 
-    if (res instanceof Error) {
+    if (!res.ok) {
       return {
         ok: false,
         code: JackallErrorCode.FAILED_ASYNCTASK,
-        value: res,
+        value: res.value,
       };
     }
 
     return {
       ok: true,
-      value: res,
+      value: res.value,
     };
   }
 
-  private async wait<A>(d: Promise<A>): Promise<A | Error> {
+  private async wait<A>(
+    d: Promise<A>
+  ): Promise<{ ok: true; value: A } | { ok: false; value: any }> {
     try {
-      return await d;
+      return {
+        ok: true,
+        value: await d,
+      };
     } catch (e) {
-      return e;
+      return {
+        ok: false,
+        value: e,
+      };
     }
   }
 
@@ -87,3 +95,5 @@ class Jackall<T extends string> {
 }
 
 export const jackall = new Jackall<string>();
+
+export const makeJackall = <T extends string>() => new Jackall<T>();
