@@ -8,13 +8,22 @@ interface JackallOK<T> {
   value: T;
 }
 
-interface JackallNG<T> {
+interface JackallNG {
   ok: false;
-  code: typeof JackallErrorCode[keyof typeof JackallErrorCode];
-  value: T | Error;
+  code: Exclude<
+    typeof JackallErrorCode[keyof typeof JackallErrorCode],
+    typeof JackallErrorCode.FAILED_ASYNCTASK
+  >;
+  value: Error;
 }
 
-type JackallResult<T> = JackallOK<T> | JackallNG<T>;
+interface JackallExpectedNG<T> {
+  ok: false;
+  code: typeof JackallErrorCode.FAILED_ASYNCTASK;
+  value: T;
+}
+
+type JackallResult<T> = JackallOK<T> | JackallNG | JackallExpectedNG<T>;
 
 class Jackall<T extends string> {
   private resources: {
