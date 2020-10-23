@@ -1,5 +1,5 @@
 {
-  "name": "jaocc",
+  "name": "jackall",
   "version": "1.0.0",
   "description": "async/await for optimistic concurrency control.",
   "main": "index.js",
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/hikouki/jaocc.git"
+    "url": "git+ssh://git@github.com/hikouki/jackall.git"
   },
   "author": "hikouki",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hikouki/jaocc/issues"
+    "url": "https://github.com/hikouki/jackall/issues"
   },
-  "homepage": "https://github.com/hikouki/jaocc#readme"
+  "homepage": "https://github.com/hikouki/jackall#readme"
 }

@@ -1,22 +1,22 @@
-export const JaoccErrorCode = {
+export const JackallErrorCode = {
   NOMATCH_VERSION: "Version don't match." as const,
   FAILED_ASYNCTASK: "Failed to async task." as const,
 };
 
-interface JaoccOK<T> {
+interface JackallOK<T> {
   ok: true;
   value: T;
 }
 
-interface JaoccNG {
+interface JackallNG {
   ok: false;
-  code: typeof JaoccErrorCode[keyof typeof JaoccErrorCode];
+  code: typeof JackallErrorCode[keyof typeof JackallErrorCode];
   value: Error;
 }
 
-type JaoccResult<T> = JaoccOK<T> | JaoccNG;
+type JackallResult<T> = JackallOK<T> | JackallNG;
 
-class Jaocc<T extends string> {
+class Jackall<T extends string> {
   private resources: {
     [K in T]?: {
       version: number;
@@ -26,7 +26,7 @@ class Jaocc<T extends string> {
 
   constructor() {}
 
-  async acquire<A>(key: T, d: Promise<A>): Promise<JaoccResult<A>> {
+  async acquire<A>(key: T, d: Promise<A>): Promise<JackallResult<A>> {
     const version = this.increment(key);
 
     const res = await this.wait(d);
@@ -36,7 +36,7 @@ class Jaocc<T extends string> {
     if (version !== this.getVersion(key)) {
       return {
         ok: false,
-        code: JaoccErrorCode.NOMATCH_VERSION,
+        code: JackallErrorCode.NOMATCH_VERSION,
         value: new Error(""),
       };
     }
@@ -44,7 +44,7 @@ class Jaocc<T extends string> {
     if (res instanceof Error) {
       return {
         ok: false,
-        code: JaoccErrorCode.FAILED_ASYNCTASK,
+        code: JackallErrorCode.FAILED_ASYNCTASK,
         value: res,
       };
     }
@@ -86,4 +86,4 @@ class Jaocc<T extends string> {
   }
 }
 
-export const jaocc = new Jaocc<string>();
+export const jackall = new Jackall<string>();
