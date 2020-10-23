@@ -1,4 +1,4 @@
-import { jackall, JackallErrorCode, makeJackall } from "../";
+import { jackall, JACKALL_ERROR_CODE, makeJackall } from "../";
 
 describe("jackall", () => {
   it("Single task.", async () => {
@@ -18,8 +18,8 @@ describe("jackall", () => {
 
     expect(act1).toStrictEqual({
       ok: false,
-      code: JackallErrorCode.NOMATCH_VERSION,
-      value: new Error(`Jackall Error: ${JackallErrorCode.NOMATCH_VERSION}`),
+      code: JACKALL_ERROR_CODE.NOMATCH_VERSION,
+      value: new Error(`Jackall Error: ${JACKALL_ERROR_CODE.NOMATCH_VERSION}`),
     });
     expect(act2).toStrictEqual({ ok: true, value: "ping2" });
   });
@@ -50,12 +50,12 @@ describe("jackall", () => {
 
     expect(act1).toStrictEqual({
       ok: false,
-      code: JackallErrorCode.NOMATCH_VERSION,
-      value: new Error(`Jackall Error: ${JackallErrorCode.NOMATCH_VERSION}`),
+      code: JACKALL_ERROR_CODE.NOMATCH_VERSION,
+      value: new Error(`Jackall Error: ${JACKALL_ERROR_CODE.NOMATCH_VERSION}`),
     });
     expect(act2).toStrictEqual({
       ok: false,
-      code: JackallErrorCode.FAILED_ASYNCTASK,
+      code: JACKALL_ERROR_CODE.FAILED_ASYNCTASK,
       value: "ping2-ng",
     });
   });
@@ -75,13 +75,13 @@ describe("jackall", () => {
 
     expect(act1).toStrictEqual({
       ok: false,
-      code: JackallErrorCode.NOMATCH_VERSION,
-      value: new Error(`Jackall Error: ${JackallErrorCode.NOMATCH_VERSION}`),
+      code: JACKALL_ERROR_CODE.NOMATCH_VERSION,
+      value: new Error(`Jackall Error: ${JACKALL_ERROR_CODE.NOMATCH_VERSION}`),
     });
 
     expect(act2).toStrictEqual({
       ok: false,
-      code: JackallErrorCode.FAILED_ASYNCTASK,
+      code: JACKALL_ERROR_CODE.FAILED_ASYNCTASK,
       value: new Error("critical"),
     });
   });
