@@ -1,0 +1,27 @@
+{
+  "name": "jaocc",
+  "version": "1.0.0",
+  "description": "async/await for optimistic concurrency control.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.1.2",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hikouki/jaocc.git"
+  },
+  "author": "hikouki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hikouki/jaocc/issues"
+  },
+  "homepage": "https://github.com/hikouki/jaocc#readme"
+}
