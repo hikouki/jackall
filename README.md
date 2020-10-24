@@ -1,5 +1,7 @@
 # Jackall
 
+![CI](https://github.com/hikouki/jackall/workflows/CI/badge.svg)
+
 async/await for optimistic concurrency control. (Last in wins.)
 
 ## Install
