@@ -18,8 +18,8 @@ Please refer to [tests](https://github.com/hikouki/jackall/blob/main/__tests__/i
 import { jackall } from "jackall";
 
 // async tasks.
-const task1 = async () => new Promise((ok) => setTimeout(ok, 100, "ping1"));
-const task2 = async () => new Promise((ok) => setTimeout(ok, 200, "ping2"));
+const task1 = async () => new Promise((ok) => setTimeout(ok, 200, "ping1"));
+const task2 = async () => new Promise((ok) => setTimeout(ok, 100, "ping2"));
 
 // jackall.acquire. (resource name is `tiger`)
 const [act1, act2] = await Promise.all([

@@ -8,8 +8,8 @@ describe("jackall", () => {
   });
 
   it("Conflict.", async () => {
-    const task1 = async () => new Promise((ok) => setTimeout(ok, 100, "ping1"));
-    const task2 = async () => new Promise((ok) => setTimeout(ok, 200, "ping2"));
+    const task1 = async () => new Promise((ok) => setTimeout(ok, 200, "ping1"));
+    const task2 = async () => new Promise((ok) => setTimeout(ok, 100, "ping2"));
 
     const [act1, act2] = await Promise.all([
       jackall.acquire("tiger", task1()),
