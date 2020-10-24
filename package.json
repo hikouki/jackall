@@ -1,9 +1,17 @@
 {
   "name": "jackall",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "async/await for optimistic concurrency control.(Last in wins.)",
   "main": "index.js",
-  "keywords": ["typescript", "async", "await", "promise", "optimistic", "concurrency", "last in wins"],
+  "keywords": [
+    "typescript",
+    "async",
+    "await",
+    "promise",
+    "optimistic",
+    "concurrency",
+    "last in wins"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.15",
